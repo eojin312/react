@@ -8,12 +8,8 @@ function App() {
     let post = '맛집';
     let [title1, actionChangeTitle] = useState(['python', 'java', 'kotlin', 'ruby']);
     let [logo, setLogo] = useState('title');
-    let [popupApply, good] = useState(0);
+    let [popupApply, setPopupApply] = useState(Array(title1.length).fill(0));
     const [modal, setModal] = useState(false);
-
-    [1, 2, 3].map(function (a) {
-        return '123123123';
-    })
 
     return (
         <div className="App">
@@ -38,16 +34,18 @@ function App() {
                 {
                     title1.map(function (a, i) {
                         return (
-                            <div className="list">
+                            <div className="list" key={i}>
                                 <h4 onClick={() => setModal(!modal)}>{a}</h4>
                                 <p>2/18 발행</p>
 
                                 <button onClick={() => {
-                                    good(popupApply + 1)
+                                    let copyPopupApply = [...popupApply];
+                                    copyPopupApply[i] += 1;
+                                    setPopupApply(copyPopupApply);
                                 }}>좋아요
                                 </button>
 
-                                <p>{popupApply}</p>
+                                <p>{popupApply[i]}</p>
                             </div>
                         )
                     })
