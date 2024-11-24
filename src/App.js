@@ -9,6 +9,7 @@ function App() {
     let [title1, actionChangeTitle] = useState(['python', 'java', 'kotlin', 'ruby']);
     let [logo, setLogo] = useState('title');
     let [popupApply, good] = useState(0);
+    const [modal, setModal] = useState(false);
 
     return (
         <div className="App">
@@ -25,12 +26,12 @@ function App() {
 
                 <button onClick={() => {
                     let copy = [...title1]
-                    copy.sort((a,b) => a.toLowerCase() < b.toLowerCase() ? -1 : 1);
+                    copy.sort((a, b) => a.toLowerCase() < b.toLowerCase() ? -1 : 1);
                     actionChangeTitle(copy);
                 }}>가나다라 순 정렬
                 </button>
 
-                <h4>{title1[0]}
+                <h4 onClick={() => setModal(true)}>{title1[0]}
                     <button onClick={() => {
                         good(popupApply + 1)
                     }}>좋아요
@@ -47,9 +48,11 @@ function App() {
                 <p>2/18 발행</p>
             </div>
 
-            <Modal />
+            {
+                modal === true ? <Modal/> : null
+            }
 
-            <Anime />
+            <Anime/>
         </div>
     );
 }
