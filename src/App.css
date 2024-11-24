@@ -21,6 +21,13 @@ div {
   border-bottom: 1px solid grey;
 }
 
+.modal {
+  margin-top: 20px;
+  padding: 20px;
+  background: #eee;
+  text-align: left;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -40,6 +47,19 @@ div {
 
 .App-link {
   color: #61dafb;
+}
+
+.animated-div {
+  width: 100px;
+  height: 100px;
+  background-color: #ff6f61;
+  border-radius: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.animated-div:hover {
+  background-color: #6c5ce7;
+  transform: scale(1.2);
 }
 
 @keyframes App-logo-spin {
