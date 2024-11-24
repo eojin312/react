@@ -31,7 +31,7 @@ function App() {
                 }}>가나다라 순 정렬
                 </button>
 
-                <h4 onClick={() => setModal(true)}>{title1[0]}
+                <h4 onClick={() => setModal(!modal)}>{title1[0]}
                     <button onClick={() => {
                         good(popupApply + 1)
                     }}>좋아요
