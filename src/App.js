@@ -11,6 +11,10 @@ function App() {
     let [popupApply, good] = useState(0);
     const [modal, setModal] = useState(false);
 
+    [1, 2, 3].map(function (a) {
+        return '123123123';
+    })
+
     return (
         <div className="App">
             <div className="black-nav">
@@ -31,21 +35,23 @@ function App() {
                 }}>가나다라 순 정렬
                 </button>
 
-                <h4 onClick={() => setModal(!modal)}>{title1[0]}
-                    <button onClick={() => {
-                        good(popupApply + 1)
-                    }}>좋아요
-                    </button>
-                    {popupApply} </h4>
-                <p>2/18 발행</p>
-            </div>
-            <div className="list">
-                <h4>{title1[1]}</h4>
-                <p>2/18 발행</p>
-            </div>
-            <div className="list">
-                <h4>{title1[2]}</h4>
-                <p>2/18 발행</p>
+                {
+                    title1.map(function (a, i) {
+                        return (
+                            <div className="list">
+                                <h4 onClick={() => setModal(!modal)}>{a}</h4>
+                                <p>2/18 발행</p>
+
+                                <button onClick={() => {
+                                    good(popupApply + 1)
+                                }}>좋아요
+                                </button>
+
+                                <p>{popupApply}</p>
+                            </div>
+                        )
+                    })
+                }
             </div>
 
             {
