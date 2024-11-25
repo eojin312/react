@@ -10,6 +10,8 @@ function App() {
     let [logo, setLogo] = useState('title');
     let [popupApply, setPopupApply] = useState(Array(title1.length).fill(0));
     const [modal, setModal] = useState(false);
+    let [title, setTitle] = useState(0);
+
 
     return (
         <div className="App">
@@ -35,7 +37,7 @@ function App() {
                     title1.map(function (a, i) {
                         return (
                             <div className="list" key={i}>
-                                <h4 onClick={() => setModal(!modal)}>{a}</h4>
+                                <h4 onClick={() => {setModal(!modal); setTitle(i);} }> { title1[i] }</h4>
                                 <p>2/18 발행</p>
 
                                 <button onClick={() => {
@@ -53,7 +55,7 @@ function App() {
             </div>
 
             {
-                modal === true ? <Modal setChangeTitle={setChangeTitle} /> : null
+                modal === true ? <Modal title = {title} bookTitle={title1} /> : null
             }
 
             <Anime/>
@@ -64,11 +66,11 @@ function App() {
 function Modal(props) {
     return (
         <div className={"modal"}>
-            <h4>제목</h4>
+            <h4>{ props.bookTitle[props.title] }</h4>
             <p>날짜</p>
             <p>상세내용</p>
             <button onClick={() => {
-                props.setChangeTitle(['자바', '파이썬', '코틀린', '루비'])
+                props.bookTitle(['자바', '파이썬', '코틀린', '루비'])
             }}>제목 수정</button>
         </div>
     );
