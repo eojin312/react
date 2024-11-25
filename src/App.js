@@ -6,7 +6,7 @@ import {useState} from "react";
 
 function App() {
     let post = '맛집';
-    let [title1, actionChangeTitle] = useState(['python', 'java', 'kotlin', 'ruby']);
+    let [title1, setChangeTitle] = useState(['python', 'java', 'kotlin', 'ruby']);
     let [logo, setLogo] = useState('title');
     let [popupApply, setPopupApply] = useState(Array(title1.length).fill(0));
     const [modal, setModal] = useState(false);
@@ -20,14 +20,14 @@ function App() {
                 <button onClick={() => {
                     let copy = [...title1]
                     copy[0] = '여성 코트 추천';
-                    actionChangeTitle(copy);
+                    setChangeTitle(copy);
                 }}>글 수정
                 </button>
 
                 <button onClick={() => {
                     let copy = [...title1]
                     copy.sort((a, b) => a.toLowerCase() < b.toLowerCase() ? -1 : 1);
-                    actionChangeTitle(copy);
+                    setChangeTitle(copy);
                 }}>가나다라 순 정렬
                 </button>
 
@@ -53,7 +53,7 @@ function App() {
             </div>
 
             {
-                modal === true ? <Modal/> : null
+                modal === true ? <Modal setChangeTitle={setChangeTitle} /> : null
             }
 
             <Anime/>
@@ -61,14 +61,17 @@ function App() {
     );
 }
 
-function Modal() {
+function Modal(props) {
     return (
         <div className={"modal"}>
             <h4>제목</h4>
             <p>날짜</p>
             <p>상세내용</p>
+            <button onClick={() => {
+                props.setChangeTitle(['자바', '파이썬', '코틀린', '루비'])
+            }}>제목 수정</button>
         </div>
-    )
+    );
 }
 
 function Anime() {
