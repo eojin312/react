@@ -9,7 +9,7 @@ function App() {
     let [title1, setChangeTitle] = useState(['python', 'java', 'kotlin', 'ruby']);
     let [logo, setLogo] = useState('title');
     let [popupApply, setPopupApply] = useState(Array(title1.length).fill(0));
-    const [modal, setModal] = useState(false);
+    let [modal, setModal] = useState(false);
     let [title, setTitle] = useState(0);
 
 
